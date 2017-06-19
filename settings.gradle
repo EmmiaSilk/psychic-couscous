@@ -1,5 +1,1 @@
-include ':API'
-include ':Core'
-include ':Server'
-include ':Client'
-
+include 'API', 'Core', 'Client', 'Server'

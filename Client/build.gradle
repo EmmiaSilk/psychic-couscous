@@ -1,18 +1,7 @@
-group 'com.emmiasilk.urealms'
+group 'com.emmiasilk.urealms.client'
 version '0.0.1'
 
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-
     compile project(':API')
     compile project(':Core')
 }
