@@ -1,4 +1,4 @@
-group "com.emmiasilk.urealms.core"
+group "${parent.group}.core"
 version "0.0.1"
 
 dependencies {

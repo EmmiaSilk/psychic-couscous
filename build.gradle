@@ -1,3 +1,5 @@
+group "com.emmiasilk.urealms"
+
 subprojects {
     apply plugin: "java"
 
