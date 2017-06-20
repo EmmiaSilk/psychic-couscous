@@ -1,7 +1,34 @@
-group 'com.emmiasilk.urealms.client'
-version '0.0.1'
+group "com.emmiasilk.urealms.client"
+version "0.0.1"
+
+def lwjglVersion = "3.1.2"
 
 dependencies {
-    compile project(':API')
-    compile project(':Core')
+    compile project(":API")
+    compile project(":Core")
+
+    compile "org.lwjgl:lwjgl:${lwjglVersion}"
+        runtime "org.lwjgl:lwjgl:${lwjglVersion}:natives-windows"
+        runtime "org.lwjgl:lwjgl:${lwjglVersion}:natives-linux"
+        runtime "org.lwjgl:lwjgl:${lwjglVersion}:natives-macos"
+
+    compile "org.lwjgl:lwjgl-glfw:${lwjglVersion}"
+        runtime "org.lwjgl:lwjgl-glfw:${lwjglVersion}:natives-windows"
+        runtime "org.lwjgl:lwjgl-glfw:${lwjglVersion}:natives-linux"
+        runtime "org.lwjgl:lwjgl-glfw:${lwjglVersion}:natives-macos"
+
+    compile "org.lwjgl:lwjgl-opengl:${lwjglVersion}"
+        runtime "org.lwjgl:lwjgl-opengl:${lwjglVersion}:natives-windows"
+        runtime "org.lwjgl:lwjgl-opengl:${lwjglVersion}:natives-linux"
+        runtime "org.lwjgl:lwjgl-opengl:${lwjglVersion}:natives-macos"
+
+    compile "org.lwjgl:lwjgl-stb:${lwjglVersion}"
+        runtime "org.lwjgl:lwjgl-stb:${lwjglVersion}:natives-windows"
+        runtime "org.lwjgl:lwjgl-stb:${lwjglVersion}:natives-linux"
+        runtime "org.lwjgl:lwjgl-stb:${lwjglVersion}:natives-macos"
+
+    compile "org.lwjgl:lwjgl-nuklear:${lwjglVersion}"
+        runtime "org.lwjgl:lwjgl-nuklear:${lwjglVersion}:natives-windows"
+        runtime "org.lwjgl:lwjgl-nuklear:${lwjglVersion}:natives-linux"
+        runtime "org.lwjgl:lwjgl-nuklear:${lwjglVersion}:natives-macos"
 }
