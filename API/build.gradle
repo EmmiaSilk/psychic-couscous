@@ -1,4 +1,4 @@
-group 'com.emmiasilk.urealms.api'
-version '0.0.1'
+group "com.emmiasilk.urealms.api"
+version "0.0.1"
 
 dependencies {}

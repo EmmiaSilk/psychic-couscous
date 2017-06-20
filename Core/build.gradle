@@ -1,6 +1,6 @@
-group 'com.emmiasilk.urealms.core'
-version '0.0.1'
+group "com.emmiasilk.urealms.core"
+version "0.0.1"
 
 dependencies {
-    compile project(':API')
+    compile project(":API")
 }

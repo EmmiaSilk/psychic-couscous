@@ -1,7 +1,10 @@
-group 'com.emmiasilk.urealms.server'
-version '0.0.1'
+group "com.emmiasilk.urealms.server"
+version "0.0.1"
+
+apply plugin: "application"
+mainClassName = "com.emmiasilk.urealms.server.Main"
 
 dependencies {
-    compile project(':API')
-    compile project(':Core')
+    compile project(":API")
+    compile project(":Core")
 }
