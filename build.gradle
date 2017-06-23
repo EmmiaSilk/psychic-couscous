@@ -2,8 +2,9 @@ group "com.emmiasilk.urealms"
 
 subprojects {
     apply plugin: "java"
+    apply plugin: "idea"
 
-    def log4j = "2.8.2"
+    def log4jVersion = "2.8.2"
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
@@ -15,7 +16,7 @@ subprojects {
     dependencies {
         testCompile "junit:junit:4.12"
 
-        compile "org.apache.logging.log4j:log4j-api:${log4j}"
-        compile "org.apache.logging.log4j:log4j-core:${log4j}"
+        compile "org.apache.logging.log4j:log4j-api:${log4jVersion}"
+        compile "org.apache.logging.log4j:log4j-core:${log4jVersion}"
     }
 }

@@ -1,10 +1,13 @@
+plugins {
+    id "application"
+    id "com.github.johnrengelman.shadow" version "2.0.1"
+}
+
 group "${parent.group}.client"
 version "0.0.1"
+mainClassName = "${group}.Main"
 
 def lwjglVersion = "3.1.2"
-
-apply plugin: "application"
-mainClassName = "${group}.Main"
 
 dependencies {
     compile project(":API")
@@ -34,4 +37,18 @@ dependencies {
     runtime "org.lwjgl:lwjgl-nuklear:${lwjglVersion}:natives-windows"
     runtime "org.lwjgl:lwjgl-nuklear:${lwjglVersion}:natives-linux"
     runtime "org.lwjgl:lwjgl-nuklear:${lwjglVersion}:natives-macos"
+}
+
+jar {
+    def manifestClasspath = configurations.runtime.collect { it.getName() }.join(' ')
+    manifest {
+        attributes "Main-Class": "${mainClassName}",
+                'Implementation-Title': "Test thing",
+                'Implementation-Version': '0.0.1',
+                'Built-By': System.getProperty('user.name'),
+                'Built-Date': new Date(),
+                'Built-JDK': System.getProperty('java.version'),
+                'Built-Gradle': gradle.gradleVersion,
+                'Class-Path': manifestClasspath
+    }
 }
