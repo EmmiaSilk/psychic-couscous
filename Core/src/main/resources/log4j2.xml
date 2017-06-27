@@ -2,10 +2,13 @@
 <configuration status="INFO">
     <Appenders>
         <Console name="SysOut" target="SYSTEM_OUT">
-            <PatternLayout pattern="%highlight{[%d{HH:mm:ss}] [%t/%level]}{FATAL=red, ERROR=red, WARN=yellow, INFO=white, DEBUG=green, TRACE=blue}: %msg%n"/>
+            <PatternLayout pattern="%highlight{[%d{HH:mm:ss}] [%level]}{FATAL=red, ERROR=red, WARN=yellow, INFO=white, DEBUG=green, TRACE=blue}: %msg%n"/>
         </Console>
+        <Queue name="ServerConsoleGui" ignoreExceptions="true">
+            <PatternLayout pattern="[%d{HH:mm:ss}] [%level]: %msg%n"/>
+        </Queue>
         <RollingRandomAccessFile name="File" fileName="logs/latest.log" filePattern="logs/%d{yyyy-MM-dd}-%i.log.gz">
-            <PatternLayout pattern="[%d{HH:mm:ss}]  [%t/%level]: %msg%n"/>
+            <PatternLayout pattern="[%d{HH:mm:ss}]  [%level]: %msg%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
                 <OnStartupTriggeringPolicy/>
@@ -16,6 +19,7 @@
         <Root level="all">
             <AppenderRef ref="SysOut"/>
             <AppenderRef ref="File"/>
+            <AppenderRef ref="ServerConsoleGui"/>
         </Root>
     </Loggers>
 </configuration>
