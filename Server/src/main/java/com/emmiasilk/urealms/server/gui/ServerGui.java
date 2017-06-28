@@ -2,8 +2,8 @@ package com.emmiasilk.urealms.server.gui;
 
 import com.emmiasilk.urealms.core.logging.Logging;
 import com.emmiasilk.urealms.core.logging.QueueAppender;
-import com.emmiasilk.urealms.server.Main;
 import com.emmiasilk.urealms.server.UrealmsServer;
+
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

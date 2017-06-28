@@ -18,6 +18,16 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+/**
+ * Appender class for log4j.
+ *
+ * <p>
+ * Stores logging messages in a queue so they can later be appended
+ * to a Javafx TextArea.
+ * </p>
+ *
+ * @since 0.0.1
+ */
 @Plugin(name = "Queue", category = "Core", elementType = "appender", printObject = true)
 public class QueueAppender extends AbstractAppender {
     private static final int MAX_CAPACITY = 250;
@@ -26,12 +36,26 @@ public class QueueAppender extends AbstractAppender {
 
     private final BlockingQueue<String> queue;
 
+    /**
+     * Construct a new instance of the appender.
+     *
+     * @param name             the name of the appender instance
+     * @param filter           The appender's filter
+     * @param layout           the layout the appender uses
+     * @param ignoreExceptions whether or not to ignore
+     * @param queue            the queue the appender uses
+     */
     private QueueAppender(String name, Filter filter, Layout<? extends Serializable> layout, boolean ignoreExceptions,
                           BlockingQueue<String> queue) {
         super(name, filter, layout, ignoreExceptions);
         this.queue = queue;
     }
 
+    /**
+     * Append a line to the end of the queue.
+     *
+     * @param event the Logging event to be added
+     */
     @Override
     public void append(LogEvent event) {
         if (queue.size() >= MAX_CAPACITY) {
@@ -40,6 +64,16 @@ public class QueueAppender extends AbstractAppender {
         queue.add(getLayout().toSerializable(event).toString());
     }
 
+    /**
+     * Create a new appender instance. This is the method called by Log4J.
+     *
+     * @param name   the name of the appender instance
+     * @param filter The appender's filter
+     * @param layout the layout the appender uses
+     * @param ignore whether or not to ignore
+     * @param target Not too sure what this is but it;s required
+     * @return A new queue appender
+     */
     @PluginFactory
     public static QueueAppender createAppender(@PluginAttribute("name") String name,
                                                @PluginElement("Filters") Filter filter,
@@ -68,6 +102,12 @@ public class QueueAppender extends AbstractAppender {
         return appender;
     }
 
+    /**
+     * Gets the next line from the top of the queue.
+     *
+     * @param queueName the name of the queue
+     * @return The string from the log queue
+     */
     public static String getNext(String queueName) {
         QUEUE_LOCK.readLock().lock();
         BlockingQueue<String> queue = QUEUES.get(queueName);
