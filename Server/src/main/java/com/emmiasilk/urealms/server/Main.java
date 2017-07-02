@@ -1,6 +1,7 @@
 package com.emmiasilk.urealms.server;
 
-import com.emmiasilk.urealms.core.logging.Logging;
+import com.emmiasilk.urealms.api.logging.Logging;
+import com.emmiasilk.urealms.api.util.I18n;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -25,7 +26,9 @@ public class Main {
      * @param args the arguments passed to the application from the command line.
      */
     public static void main(String[] args) {
-        Logging.logInfo("Alright..... I wanna cast a spell");
+        new I18n("en_US");
+
+        Logging.logInfo(I18n.getInstance().getLocalizedString("server.welcome"));
 
         parseArgs(Arrays.asList(args));
 
@@ -39,10 +42,10 @@ public class Main {
      */
     private static void parseArgs(List<String> args) {
         if (args.contains("nogui")) {
-            argsMap.put("gui", "false");
+            argsMap.put("resources/server_gui", "false");
         }
         else {
-            argsMap.put("gui", "true");
+            argsMap.put("resources/server_gui", "true");
         }
 
     }

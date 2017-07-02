@@ -1,5 +1,5 @@
 .root {
-    -fx-background-image: url("/gui/img/background.jpg");
+    -fx-background-image: url("/resources/server_gui/img/background.jpg");
     -fx-background-size: cover;
     -fx-text-fill: #F9E4CA;
 }
@@ -43,7 +43,7 @@
 
 /* <editor-fold desc="Fancy Borders"> */
 .cardback_border_brown {
-    -fx-border-image-source: url("/gui/img/Cardback.png");
+    -fx-border-image-source: url("/resources/server_gui/img/Cardback.png");
     -fx-border-image-insets: 0;
     -fx-border-image-repeat: stretch;
     -fx-border-image-width: 35;
@@ -52,7 +52,7 @@
     -fx-background-insets: 0;
 }
 .cardback_border_button {
-    -fx-border-image-source: url("/gui/img/Cardback.png");
+    -fx-border-image-source: url("/resources/server_gui/img/Cardback.png");
     -fx-border-image-insets: 0;
     -fx-border-image-repeat: stretch;
     -fx-border-image-width: 8;
@@ -62,7 +62,7 @@
 }
 
 .cardback_border_purple {
-    -fx-border-image-source: url("/gui/img/Cardback2.png");
+    -fx-border-image-source: url("/resources/server_gui/img/Cardback2.png");
     -fx-border-image-insets: 0;
     -fx-border-image-repeat: stretch;
     -fx-border-image-width: 35;

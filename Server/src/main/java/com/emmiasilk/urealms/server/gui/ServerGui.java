@@ -1,6 +1,7 @@
 package com.emmiasilk.urealms.server.gui;
 
-import com.emmiasilk.urealms.core.logging.Logging;
+import com.emmiasilk.urealms.api.util.I18n;
+import com.emmiasilk.urealms.api.logging.Logging;
 import com.emmiasilk.urealms.core.logging.QueueAppender;
 import com.emmiasilk.urealms.server.UrealmsServer;
 
@@ -31,25 +32,25 @@ public class ServerGui extends Application implements Initializable {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/gui/server_gui.fxml"));
-            root.getStylesheets().add("/gui/server_gui.css");
+            Parent root = FXMLLoader.load(getClass().getResource("/resources/server_gui/server_gui.fxml"));
+            root.getStylesheets().add("/resources/server_gui/server_gui.css");
             primaryStage.setScene(new Scene(root));
 
-            primaryStage.getIcons().add(new Image("/gui/img/ur_logo.png"));
-            primaryStage.setTitle("URealms Server");
+            primaryStage.getIcons().add(new Image("/resources/server_gui/img/ur_logo.png"));
+            primaryStage.setTitle(I18n.getInstance().getLocalizedString("server.gui.window_title"));
             primaryStage.setResizable(false);
             primaryStage.show();
         }
         catch (Exception exception) {
-            Logging.logError("Couldn't build server GUI", exception);
+            Logging.logError(I18n.getInstance().getLocalizedString("server.gui.error.could_not_build"), exception);
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        consoleTab.setText("Console");
-        playerTab.setText("Player");
-        statsTab.setText("Statistic");
+        consoleTab.setText(I18n.getInstance().getLocalizedString("server.gui.console_tab"));
+        playerTab.setText(I18n.getInstance().getLocalizedString("server.gui.player_tab"));
+        statsTab.setText(I18n.getInstance().getLocalizedString("server.gui.stats_tab"));
 
         initConsoleTab();
         //initPlayersTab();
@@ -57,8 +58,8 @@ public class ServerGui extends Application implements Initializable {
     }
 
     private void initConsoleTab() {
-        saveButton.setText("Save");
-        exitButton.setText("Exit");
+        saveButton.setText(I18n.getInstance().getLocalizedString("server.gui.save_button"));
+        exitButton.setText(I18n.getInstance().getLocalizedString("server.gui.exit_button"));
 
         saveButton.setOnAction(event -> UrealmsServer.getServer().save());
         exitButton.setOnAction(event -> UrealmsServer.getServer().close());

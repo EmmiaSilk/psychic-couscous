@@ -1,0 +1,14 @@
+server.gui.window_title=Urealms Server
+server.gui.console_tab=Console
+server.gui.player_tab=Players
+server.gui.stats_tab=Statistics
+server.gui.save_button=Save
+server.gui.exit_button=Exit
+server.gui.error.could_not_build=Couldn't build server GUI
+
+server.welcome= Alright... I wanna cast a spell
+server.starting=Starting server...
+server.saving=Saving server...
+server.exiting=Exiting server...
+
+client.starting=Starting Client...

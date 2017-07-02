@@ -1,4 +1,4 @@
-package com.emmiasilk.urealms.core.logging;
+package com.emmiasilk.urealms.api.logging;
 
 
 import org.apache.logging.log4j.LogManager;

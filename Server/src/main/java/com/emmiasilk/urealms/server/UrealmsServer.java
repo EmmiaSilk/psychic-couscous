@@ -1,6 +1,7 @@
 package com.emmiasilk.urealms.server;
 
-import com.emmiasilk.urealms.core.logging.Logging;
+import com.emmiasilk.urealms.api.logging.Logging;
+import com.emmiasilk.urealms.api.util.I18n;
 import com.emmiasilk.urealms.server.gui.ServerGui;
 
 import java.awt.GraphicsEnvironment;
@@ -26,9 +27,9 @@ public class UrealmsServer {
      * @param args Map of arguments from the command line.
      */
     UrealmsServer(Map<String, String> args) {
-        Logging.logInfo("Starting server...");
+        Logging.logInfo(I18n.getInstance().getLocalizedString("server.starting"));
 
-        if (Boolean.parseBoolean(args.get("gui")) && !GraphicsEnvironment.isHeadless()) {
+        if (Boolean.parseBoolean(args.get("resources/server_gui")) && !GraphicsEnvironment.isHeadless()) {
             new Thread(() -> ServerGui.launch(ServerGui.class)).start();
         }
 
@@ -39,7 +40,7 @@ public class UrealmsServer {
      * Save the server
      */
     public void save() {
-        Logging.logInfo("Saving server...");
+        Logging.logInfo(I18n.getInstance().getLocalizedString("server.saving"));
     }
 
     /**
@@ -61,7 +62,7 @@ public class UrealmsServer {
     public void close(int status) {
         this.save();
 
-        Logging.logInfo("Exiting server...");
+        Logging.logInfo(I18n.getInstance().getLocalizedString("server.exiting"));
         System.exit(status);
     }
 
