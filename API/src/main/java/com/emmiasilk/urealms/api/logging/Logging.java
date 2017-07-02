@@ -65,10 +65,10 @@ public class Logging {
      * Log an Error level message
      *
      * @param message   the message to log
-     * @param exception the exception that caused the error
+     * @param throwable the throwable that caused the error
      */
-    public static void logError(String message, Exception exception) {
-        LOGGER.error(message, exception);
+    public static void logError(String message, Throwable throwable) {
+        LOGGER.error(message, throwable);
     }
 
     /**
@@ -84,10 +84,20 @@ public class Logging {
      * Log a Fatal level message
      *
      * @param message   the message to log
-     * @param exception the exception that caused the error
+     * @param throwable the throwable that caused the error
      */
-    public static void logFatal(String message, Exception exception) {
-        LOGGER.fatal(message, exception);
+    public static void logFatal(String message, Throwable throwable) {
+        LOGGER.fatal(message, throwable);
+    }
+
+    /**
+     * A method that gets the instance of the Logger in case you are a heathen
+     * and the above methods aren't good enough for you.
+     *
+     * @return The instance of the logger
+     */
+    public static Logger getLogger() {
+        return LOGGER;
     }
 
 }

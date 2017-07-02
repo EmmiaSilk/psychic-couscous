@@ -12,7 +12,6 @@ import java.util.Properties;
  * <p>
  * Handles all internationalization of Strings.
  *
- *
  * <p>
  * Localized language files are stored in <code>/resources/lang/</code>
  * and end with <code>*.lang</code>. Language files need to follow the
@@ -28,7 +27,6 @@ import java.util.Properties;
  * <li>de_DE.lang -- German/Germany</li>
  * <li>fr_CA.lang -- French/Canada</li>
  * </ul>
- *
  *
  * @since 0.0.1
  */
@@ -86,14 +84,13 @@ public class I18n {
      * Gets a localized string that has the {@link String#format(String, Object...)}
      * method called on it.
      *
-     * @param key the key of the string in the language file
+     * @param key    the key of the string in the language file
      * @param format the objects to use when formatting
      * @return the localized string
      */
     public String getLocalizedStringFormatted(String key, Object... format) {
         return String.format(langFile.getProperty(key), format);
     }
-
 
     /**
      * Returns the instance of the i18n handler.

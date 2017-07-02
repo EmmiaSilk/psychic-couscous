@@ -6,6 +6,7 @@ import com.emmiasilk.urealms.api.util.I18n;
 public class Main {
 
     public static void main(String[] args) {
+        new I18n("en_US");
         Logging.logInfo(I18n.getInstance().getLocalizedString("client.starting"));
     }
 }

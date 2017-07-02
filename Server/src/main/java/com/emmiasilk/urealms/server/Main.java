@@ -41,12 +41,7 @@ public class Main {
      * @param args List of arguments.
      */
     private static void parseArgs(List<String> args) {
-        if (args.contains("nogui")) {
-            argsMap.put("resources/server_gui", "false");
-        }
-        else {
-            argsMap.put("resources/server_gui", "true");
-        }
+        argsMap.put("gui", args.contains("nogui") ? "false" : "true");
 
     }
 }

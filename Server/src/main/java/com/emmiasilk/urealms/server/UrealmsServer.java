@@ -17,7 +17,7 @@ public class UrealmsServer {
     /**
      * Instance of the server.
      */
-    private static UrealmsServer server;
+    private static UrealmsServer instance;
 
     /**
      * Constructor for the server.
@@ -33,7 +33,7 @@ public class UrealmsServer {
             new Thread(() -> ServerGui.launch(ServerGui.class)).start();
         }
 
-        server = this;
+        instance = this;
     }
 
     /**
@@ -71,7 +71,7 @@ public class UrealmsServer {
      *
      * @return the instance of the server.
      */
-    public static UrealmsServer getServer() {
-        return server;
+    public static UrealmsServer getInstance() {
+        return instance;
     }
 }

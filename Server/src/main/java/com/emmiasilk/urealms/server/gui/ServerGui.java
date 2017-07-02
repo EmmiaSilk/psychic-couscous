@@ -61,8 +61,8 @@ public class ServerGui extends Application implements Initializable {
         saveButton.setText(I18n.getInstance().getLocalizedString("server.gui.save_button"));
         exitButton.setText(I18n.getInstance().getLocalizedString("server.gui.exit_button"));
 
-        saveButton.setOnAction(event -> UrealmsServer.getServer().save());
-        exitButton.setOnAction(event -> UrealmsServer.getServer().close());
+        saveButton.setOnAction(event -> UrealmsServer.getInstance().save());
+        exitButton.setOnAction(event -> UrealmsServer.getInstance().close());
 
         consoleTextArea.setEditable(false);
 
