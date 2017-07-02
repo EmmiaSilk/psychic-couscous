@@ -12,12 +12,12 @@ import java.util.Map;
  *
  * @since 0.0.1
  */
-public class UrealmsServer {
+public class URealmsServer {
 
     /**
      * Instance of the server.
      */
-    private static UrealmsServer instance;
+    private static URealmsServer instance;
 
     /**
      * Constructor for the server.
@@ -26,7 +26,7 @@ public class UrealmsServer {
      *
      * @param args Map of arguments from the command line.
      */
-    UrealmsServer(Map<String, String> args) {
+    URealmsServer(Map<String, String> args) {
         Logging.logInfo(I18n.getInstance().getLocalizedString("server.starting"));
 
         if (Boolean.parseBoolean(args.get("resources/server_gui")) && !GraphicsEnvironment.isHeadless()) {
@@ -71,7 +71,7 @@ public class UrealmsServer {
      *
      * @return the instance of the server.
      */
-    public static UrealmsServer getInstance() {
+    public static URealmsServer getInstance() {
         return instance;
     }
 }

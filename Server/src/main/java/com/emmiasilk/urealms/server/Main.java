@@ -32,7 +32,7 @@ public class Main {
 
         parseArgs(Arrays.asList(args));
 
-        new UrealmsServer(argsMap);
+        new URealmsServer(argsMap);
     }
 
     /**

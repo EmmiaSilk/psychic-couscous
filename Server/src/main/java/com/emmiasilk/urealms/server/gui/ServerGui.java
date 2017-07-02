@@ -3,7 +3,7 @@ package com.emmiasilk.urealms.server.gui;
 import com.emmiasilk.urealms.api.util.I18n;
 import com.emmiasilk.urealms.api.logging.Logging;
 import com.emmiasilk.urealms.core.logging.QueueAppender;
-import com.emmiasilk.urealms.server.UrealmsServer;
+import com.emmiasilk.urealms.server.URealmsServer;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -61,8 +61,8 @@ public class ServerGui extends Application implements Initializable {
         saveButton.setText(I18n.getInstance().getLocalizedString("server.gui.save_button"));
         exitButton.setText(I18n.getInstance().getLocalizedString("server.gui.exit_button"));
 
-        saveButton.setOnAction(event -> UrealmsServer.getInstance().save());
-        exitButton.setOnAction(event -> UrealmsServer.getInstance().close());
+        saveButton.setOnAction(event -> URealmsServer.getInstance().save());
+        exitButton.setOnAction(event -> URealmsServer.getInstance().close());
 
         consoleTextArea.setEditable(false);
 
