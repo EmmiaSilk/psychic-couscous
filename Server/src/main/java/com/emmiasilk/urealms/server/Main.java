@@ -1,7 +1,7 @@
 package com.emmiasilk.urealms.server;
 
 import com.emmiasilk.urealms.api.logging.Logging;
-import com.emmiasilk.urealms.api.util.I18n;
+import com.emmiasilk.urealms.api.util.Lang;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -26,9 +26,7 @@ public class Main {
      * @param args the arguments passed to the application from the command line.
      */
     public static void main(String[] args) {
-        new I18n("en_US");
-
-        Logging.logInfo(I18n.getInstance().getLocalizedString("server.welcome"));
+        Logging.logInfo(Lang.format("server.welcome"));
 
         parseArgs(Arrays.asList(args));
 

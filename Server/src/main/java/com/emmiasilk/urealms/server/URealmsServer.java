@@ -1,10 +1,10 @@
 package com.emmiasilk.urealms.server;
 
 import com.emmiasilk.urealms.api.logging.Logging;
-import com.emmiasilk.urealms.api.util.I18n;
+import com.emmiasilk.urealms.api.util.Lang;
 import com.emmiasilk.urealms.server.gui.ServerGui;
 
-import java.awt.GraphicsEnvironment;
+import java.awt.*;
 import java.util.Map;
 
 /**
@@ -12,12 +12,12 @@ import java.util.Map;
  *
  * @since 0.0.1
  */
-public class URealmsServer {
+public class UrealmsServer {
 
     /**
      * Instance of the server.
      */
-    private static URealmsServer instance;
+    private static UrealmsServer instance;
 
     /**
      * Constructor for the server.
@@ -26,8 +26,8 @@ public class URealmsServer {
      *
      * @param args Map of arguments from the command line.
      */
-    URealmsServer(Map<String, String> args) {
-        Logging.logInfo(I18n.getInstance().getLocalizedString("server.starting"));
+    UrealmsServer(Map<String, String> args) {
+        Logging.logInfo(Lang.format("server.starting"));
 
         if (Boolean.parseBoolean(args.get("resources/server_gui")) && !GraphicsEnvironment.isHeadless()) {
             new Thread(() -> ServerGui.launch(ServerGui.class)).start();
@@ -40,7 +40,7 @@ public class URealmsServer {
      * Save the server
      */
     public void save() {
-        Logging.logInfo(I18n.getInstance().getLocalizedString("server.saving"));
+        Logging.logInfo(Lang.format("server.saving"));
     }
 
     /**
@@ -62,7 +62,7 @@ public class URealmsServer {
     public void close(int status) {
         this.save();
 
-        Logging.logInfo(I18n.getInstance().getLocalizedString("server.exiting"));
+        Logging.logInfo(Lang.format("server.exiting"));
         System.exit(status);
     }
 
@@ -71,7 +71,7 @@ public class URealmsServer {
      *
      * @return the instance of the server.
      */
-    public static URealmsServer getInstance() {
+    public static UrealmsServer getInstance() {
         return instance;
     }
 }

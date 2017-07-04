@@ -1,12 +1,11 @@
 package com.emmiasilk.urealms.client;
 
 import com.emmiasilk.urealms.api.logging.Logging;
-import com.emmiasilk.urealms.api.util.I18n;
+import com.emmiasilk.urealms.api.util.Lang;
 
 public class Main {
 
     public static void main(String[] args) {
-        new I18n("en_US");
-        Logging.logInfo(I18n.getInstance().getLocalizedString("client.starting"));
+        Logging.logInfo(Lang.format("client.starting"));
     }
 }
