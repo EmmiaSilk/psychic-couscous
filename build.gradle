@@ -1,9 +1,11 @@
 plugins {
+    id 'application'
     id 'java'
     id 'idea'
 }
 
 group "com.emmiasilk.urealms"
+mainClassName = "${group}.client.Main"
 version "0.0.1"
 
 libsDirName = build_dir
