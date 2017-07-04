@@ -1,4 +1,0 @@
-group "${parent.group}.api"
-version "0.0.1"
-
-dependencies {}

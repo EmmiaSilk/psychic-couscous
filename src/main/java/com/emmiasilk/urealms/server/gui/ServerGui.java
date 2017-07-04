@@ -31,11 +31,11 @@ public class ServerGui extends Application implements Initializable {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/resources/server_gui/server_gui.fxml"));
-            root.getStylesheets().add("/resources/server_gui/server_gui.css");
+            Parent root = FXMLLoader.load(getClass().getResource("/resources/gui/server_gui.fxml"));
+            root.getStylesheets().add("/resources/ui/server_gui.css");
             primaryStage.setScene(new Scene(root));
 
-            primaryStage.getIcons().add(new Image("/resources/server_gui/img/ur_logo.png"));
+            primaryStage.getIcons().add(new Image("/resources/gui/img/ur_logo.png"));
             primaryStage.setTitle(Lang.format("server.gui.window_title"));
             primaryStage.setResizable(false);
             primaryStage.show();

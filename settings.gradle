@@ -1,1 +1,1 @@
-include "API", "Core", "Client", "Server"
+rootProject.name = 'URealms'

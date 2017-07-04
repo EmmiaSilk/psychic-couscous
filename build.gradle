@@ -1,22 +1,94 @@
-group "com.emmiasilk.urealms"
-
-subprojects {
-    apply plugin: "java"
-    apply plugin: "idea"
-
-    def log4jVersion = "2.8.2"
-
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
-
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        testCompile "junit:junit:4.12"
-
-        compile "org.apache.logging.log4j:log4j-api:${log4jVersion}"
-        compile "org.apache.logging.log4j:log4j-core:${log4jVersion}"
-    }
+plugins {
+    id 'java'
+    id 'idea'
 }
+
+group "com.emmiasilk.urealms"
+version "0.0.1"
+
+libsDirName = build_dir
+distsDirName = build_dir
+
+sourceCompatibility = java_version
+targetCompatibility = java_version
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile "junit:junit:4.12"
+
+    compile "org.apache.logging.log4j:log4j-api:${log4j_version}"
+    compile "org.apache.logging.log4j:log4j-core:${log4j_version}"
+
+    compile "org.lwjgl:lwjgl:${lwjgl_version}"
+    runtime "org.lwjgl:lwjgl:${lwjgl_version}:natives-windows"
+    runtime "org.lwjgl:lwjgl:${lwjgl_version}:natives-linux"
+    runtime "org.lwjgl:lwjgl:${lwjgl_version}:natives-macos"
+
+    compile "org.lwjgl:lwjgl-glfw:${lwjgl_version}"
+    runtime "org.lwjgl:lwjgl-glfw:${lwjgl_version}:natives-windows"
+    runtime "org.lwjgl:lwjgl-glfw:${lwjgl_version}:natives-linux"
+    runtime "org.lwjgl:lwjgl-glfw:${lwjgl_version}:natives-macos"
+
+    compile "org.lwjgl:lwjgl-opengl:${lwjgl_version}"
+    runtime "org.lwjgl:lwjgl-opengl:${lwjgl_version}:natives-windows"
+    runtime "org.lwjgl:lwjgl-opengl:${lwjgl_version}:natives-linux"
+    runtime "org.lwjgl:lwjgl-opengl:${lwjgl_version}:natives-macos"
+
+    compile "org.lwjgl:lwjgl-stb:${lwjgl_version}"
+    runtime "org.lwjgl:lwjgl-stb:${lwjgl_version}:natives-windows"
+    runtime "org.lwjgl:lwjgl-stb:${lwjgl_version}:natives-linux"
+    runtime "org.lwjgl:lwjgl-stb:${lwjgl_version}:natives-macos"
+
+    compile "org.lwjgl:lwjgl-nuklear:${lwjgl_version}"
+    runtime "org.lwjgl:lwjgl-nuklear:${lwjgl_version}:natives-windows"
+    runtime "org.lwjgl:lwjgl-nuklear:${lwjgl_version}:natives-linux"
+    runtime "org.lwjgl:lwjgl-nuklear:${lwjgl_version}:natives-macos"
+
+}
+
+jar { classifier = 'all' }
+
+task apiJar(type: Jar, dependsOn: classes) {
+    println(":apiJar")
+    from(sourceSets.main.output) {
+        include 'com/emmiasilk/urealms/api/**/*'
+    }
+    classifier = 'api'
+}
+
+task coreJar(type: Jar, dependsOn: classes) {
+    println(":coreJar")
+    from(sourceSets.main.output) {
+        include 'com/emmiasilk/urealms/core/**/*'
+    }
+    classifier = 'core'
+}
+
+task clientJar(type: Jar, dependsOn: classes) {
+    println(":clientJar")
+    from sourceSets.main.resources
+    from(sourceSets.main.output) {
+        include 'com/emmiasilk/urealms/client/**/*'
+    }
+    classifier = 'client'
+}
+
+task serverJar(type: Jar, dependsOn: classes) {
+    println(":serverJar")
+    from sourceSets.main.resources
+    from(sourceSets.main.output) {
+        include 'com/emmiasilk/urealms/server/**/*'
+    }
+    classifier = 'server'
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+// Compile modules and source jar
+artifacts { archives sourcesJar, apiJar, coreJar, clientJar, serverJar }

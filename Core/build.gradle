@@ -1,7 +1,0 @@
-group "${parent.group}.core"
-version "0.0.1"
-
-dependencies {
-    compile project(":API")
-    compile "org.fusesource.jansi:jansi:1.16"
-}
