@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
-public class Lang {
+public class I18n {
 
     private Locale locale = Locale.US;
     private Properties langFile = new Properties();
-    private static Lang instance;
+    private static I18n instance;
 
     public static Locale getCurrentLocale() {
         return instance.locale;
@@ -22,7 +22,7 @@ public class Lang {
             e.printStackTrace();
         }
         File file = new File("/resources/lang/" + loc + ".lang");
-        InputStream stream = Lang.class.getResourceAsStream(file.getAbsolutePath());
+        InputStream stream = I18n.class.getResourceAsStream(file.getAbsolutePath());
         try {
             instance.langFile.load(stream);
         } catch (IOException e) {
@@ -30,8 +30,10 @@ public class Lang {
         }
     }
 
-    public static String format(String key, Object... vars) {
-        if (instance.langFile == null) setLocale(instance.locale);
+    public static String getLocalizedString(String key, Object... vars) {
+        if (instance.langFile == null) {
+            setLocale(instance.locale);
+        }
         String entry = instance.langFile.getProperty(key);
         return String.format(entry, vars);
     }

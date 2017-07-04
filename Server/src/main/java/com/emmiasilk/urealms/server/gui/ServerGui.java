@@ -1,9 +1,9 @@
 package com.emmiasilk.urealms.server.gui;
 
 import com.emmiasilk.urealms.api.logging.Logging;
-import com.emmiasilk.urealms.api.util.Lang;
+import com.emmiasilk.urealms.api.util.I18n;
 import com.emmiasilk.urealms.core.logging.QueueAppender;
-import com.emmiasilk.urealms.server.UrealmsServer;
+import com.emmiasilk.urealms.server.URealmsServer;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,20 +36,20 @@ public class ServerGui extends Application implements Initializable {
             primaryStage.setScene(new Scene(root));
 
             primaryStage.getIcons().add(new Image("/resources/server_gui/img/ur_logo.png"));
-            primaryStage.setTitle(Lang.format("server.gui.window_title"));
+            primaryStage.setTitle(I18n.getLocalizedString("server.gui.window_title"));
             primaryStage.setResizable(false);
             primaryStage.show();
         }
         catch (Exception exception) {
-            Logging.logError(Lang.format("server.gui.error.could_not_build"), exception);
+            Logging.logError(I18n.getLocalizedString("server.gui.error.could_not_build"), exception);
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        consoleTab.setText(Lang.format("server.gui.console_tab"));
-        playerTab.setText(Lang.format("server.gui.player_tab"));
-        statsTab.setText(Lang.format("server.gui.stats_tab"));
+        consoleTab.setText(I18n.getLocalizedString("server.gui.console_tab"));
+        playerTab.setText(I18n.getLocalizedString("server.gui.player_tab"));
+        statsTab.setText(I18n.getLocalizedString("server.gui.stats_tab"));
 
         initConsoleTab();
         //initPlayersTab();
@@ -57,11 +57,11 @@ public class ServerGui extends Application implements Initializable {
     }
 
     private void initConsoleTab() {
-        saveButton.setText(Lang.format("server.gui.save_button"));
-        exitButton.setText(Lang.format("server.gui.exit_button"));
+        saveButton.setText(I18n.getLocalizedString("server.gui.save_button"));
+        exitButton.setText(I18n.getLocalizedString("server.gui.exit_button"));
 
-        saveButton.setOnAction(event -> UrealmsServer.getInstance().save());
-        exitButton.setOnAction(event -> UrealmsServer.getInstance().close());
+        saveButton.setOnAction(event -> URealmsServer.getInstance().save());
+        exitButton.setOnAction(event -> URealmsServer.getInstance().close());
 
         consoleTextArea.setEditable(false);
 
