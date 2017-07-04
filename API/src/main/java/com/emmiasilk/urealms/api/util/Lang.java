@@ -9,33 +9,30 @@ public class Lang {
 
     private Locale locale = Locale.US;
     private Properties langFile = new Properties();
+    private static Lang instance;
 
-    public Locale getCurrentLocale() {
-        return locale;
+    public static Locale getCurrentLocale() {
+        return instance.locale;
     }
 
-    public String getUnlocalizedName(String type, String name) {
-        return String.format("%s.%s.name", type, name);
-    }
-
-    public void setLocale(Locale loc) {
+    public static void setLocale(Locale loc) {
         try {
-            locale = loc;
+            instance.locale = loc;
         } catch (ConcurrentModificationException e) {
             e.printStackTrace();
         }
         File file = new File("/resources/lang/" + loc + ".lang");
         InputStream stream = Lang.class.getResourceAsStream(file.getAbsolutePath());
         try {
-            langFile.load(stream);
+            instance.langFile.load(stream);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public String format(String key, Object... vars) {
-        if (langFile == null) setLocale(locale);
-        String entry = langFile.getProperty(key);
+    public static String format(String key, Object... vars) {
+        if (instance.langFile == null) setLocale(instance.locale);
+        String entry = instance.langFile.getProperty(key);
         return String.format(entry, vars);
     }
 
