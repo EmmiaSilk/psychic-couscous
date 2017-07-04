@@ -26,6 +26,8 @@ public class Main {
      * @param args the arguments passed to the application from the command line.
      */
     public static void main(String[] args) {
+        new I18n("en_US");
+
         Logging.logInfo(I18n.getLocalizedString("server.welcome"));
 
         parseArgs(Arrays.asList(args));
